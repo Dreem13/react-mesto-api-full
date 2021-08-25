@@ -1,0 +1,11 @@
+.profile__card {
+  display: flex;
+  position: relative;
+}
+
+@media screen and (max-width: 580px) {
+  .profile__card {
+    flex-direction: column;
+    align-items: center;
+  }
+}

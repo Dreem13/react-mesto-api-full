@@ -1,0 +1,14 @@
+.cards__item-title-btn {
+    background-image: url(../../../images/group_heart.svg);
+    background-color: white;
+    width: 24px;
+    height: 20px;
+    border: 1px solid white;
+    cursor: pointer;
+    transition: all .5s ease 0s;
+    outline: none;
+}
+
+.cards__item-title-btn:hover {
+    opacity: .5;
+}

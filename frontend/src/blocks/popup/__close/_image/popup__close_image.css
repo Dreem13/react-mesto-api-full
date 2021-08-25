@@ -1,0 +1,29 @@
+.popup__close_image {
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    padding: 0;
+    display: flex;
+    background-image: url(../../../images/remove-button.svg);
+    width: 40px;
+    height: 40px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border: none;
+    background-color: transparent;
+    transition: .2s;
+    outline: none;
+    cursor: pointer;
+}
+
+.popup__close_image:hover {
+    opacity: .6;
+}
+
+@media screen and (max-width: 425px) {
+    .popup__close_image {
+        top: -50px;
+        right: 0;
+    }
+}

@@ -1,0 +1,11 @@
+.header__item {   
+    color: white;    
+    text-decoration: none;
+    background-color: black;
+    border: 0;
+}
+
+.header__item:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}

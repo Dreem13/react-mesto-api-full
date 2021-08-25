@@ -1,0 +1,27 @@
+.login__signin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 192px;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.login__signin a {
+  margin-left: 5px;
+  margin-top: 15px;
+  color: #ffffff;
+  text-decoration: none;
+  transition: 0.5s ease-in-out;
+}
+
+.login__signin a:hover {
+    opacity: 0.8;
+}
+
+.login__signin p {
+  color: #ffffff;
+  margin: 0;
+  margin-top: 15px;
+}

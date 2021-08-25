@@ -1,0 +1,15 @@
+.cards__item-title-btn_liked {
+    background-image: url(../../../../images/union.svg);
+    background-color:black;
+    width: 24px;
+    height: 20px;
+    border: 1px solid white;
+    cursor: pointer;
+    transition: all .5s ease 0s;
+    outline: none;
+}
+
+.cards__item-title-btn:hover {
+    opacity: .5;
+}
+
