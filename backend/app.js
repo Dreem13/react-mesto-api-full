@@ -25,6 +25,7 @@ const NotFoundError = require('./errors/notfound-err');
 
 const allowedCors = [
   'http://frontend-mesto.nomoredomains.club',
+  'http://api.backend-mesto.nomoredomains.club',
   'localhost:3000',
 ];
 
