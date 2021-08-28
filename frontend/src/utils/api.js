@@ -127,7 +127,7 @@ class Api {
 }
 
 const api = new Api({
-  url: 'https://mesto.nomoreparties.co/v1/cohort-24',
+  url: 'https://api.backend-mesto.nomoredomains.club',
   token: '8c6e6a0b-c97b-41fa-9ce9-e79b26e708e8'
 });
 
