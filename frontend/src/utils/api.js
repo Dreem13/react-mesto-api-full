@@ -127,8 +127,7 @@ class Api {
 }
 
 const api = new Api({
-  // url: 'http://api.backend-mesto.nomoredomains.club',
-  url: 'http://frontend-mesto.nomoredomains.club',
+  url: 'http://api.backend-mesto.nomoredomains.club',
   token: '8c6e6a0b-c97b-41fa-9ce9-e79b26e708e8'
 });
 
