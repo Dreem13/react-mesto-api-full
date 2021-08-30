@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import auth from '../utils/auth.js';
+import { Link } from 'react-router-dom';
+// import auth from '../utils/auth.js';
 
 function Register(props) {
 

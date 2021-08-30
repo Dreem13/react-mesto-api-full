@@ -29,20 +29,19 @@ const allowedCors = [
   'localhost:3000',
 ];
 
-app.use(
-  cors({
-    credentials: true,
-    origin(origin, callback) {
-      if (allowedCors.includes(origin) || !origin) {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
-    },
-  }),
-);
-
-app.options('*', cors());
+app.use(cors({
+  origin(origin, callback) {
+    if (allowedCors.includes(origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: ['GET', 'PUT', 'POST', 'DELETE', 'PATCH'],
+  allowedHeaders: ['Authorization', 'Content-Type', 'Accept'],
+  credentials: true,
+  optionsSuccessStatus: 200,
+}));
 
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,

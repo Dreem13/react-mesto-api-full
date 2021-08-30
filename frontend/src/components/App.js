@@ -148,6 +148,7 @@ function App() {
     const token = localStorage.getItem('jwt')
     if (token === null) { return }
     onTokenCheck(token)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []
   );
 

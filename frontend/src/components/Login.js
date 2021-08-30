@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+/* eslint-disable react/jsx-no-duplicate-props */
+import React, { useState } from 'react';
 
 function Login(props) {
 
