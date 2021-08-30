@@ -2,7 +2,6 @@
   "name": "mesto-react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://dreem13.github.io/react-mesto-auth",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
@@ -19,7 +18,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "npm run build && scp -r ./build/* dreem@84.252.140.158:/home/dreem/react-mesto-api-full/mesto-frontend" 
+    "deploy": "npm run build && scp -r ./build/* dreem@84.252.140.158:/home/dreem/react-mesto-api-full/frontend/build" 
   },
   "eslintConfig": {
     "extends": [

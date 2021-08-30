@@ -127,8 +127,10 @@ class Api {
 }
 
 const api = new Api({
-  url: 'http://api.backend-mesto.nomoredomains.club',
-  token: '8c6e6a0b-c97b-41fa-9ce9-e79b26e708e8'
+  url: 'https://api.backend-mesto.nomoredomains.club',
+  headers: {
+    'Content-Type': 'application/json'
+  }
 });
 
 export default api;
