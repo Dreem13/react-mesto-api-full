@@ -42,6 +42,9 @@ module.exports.deleteCard = (req, res, next) => {
       card.deleteOne();
       res.send({ data: card });
     })
+    .then((card) => {
+      res.send({ message: `Карточка "${card.name}" удалена` });
+    })
     .catch((err) => {
       if (err.name === 'CastError') {
         throw new IncorrectError('Карточка с указанным id не найдена');
