@@ -11,7 +11,7 @@ export const register = (email, password) => {
       'password': password
     })
   })
-    .then(_handleResponse)
+  .then((res) => _handleResponse(res));
 }
 
 export const login = (email, password) => {
@@ -25,24 +25,18 @@ export const login = (email, password) => {
       'password': password
     })
   })
-  .then(_handleResponse)
-  .then((data) => {
-    if (data.token) {
-      localStorage.setItem('jwt', data.token);
-      return data;
-    }
-  })    
+  .then((res) => _handleResponse(res));   
 }
 
-export const checkToken = (token) => {
+export const checkToken = () => {
   return fetch(`${BASE_URL}/users/me`, {
     method: 'GET',
     headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`,
-    }
+      'Content-Type': 'application/json',      
+    },
+    credentials: 'include',
   })
-    .then(_handleResponse);
+  .then((res) => _handleResponse(res));
 }
 
 function _handleResponse(res) {

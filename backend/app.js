@@ -23,25 +23,6 @@ const app = express();
 const { validateSignUp, validateSignIn } = require('./middlewares/validators');
 const NotFoundError = require('./errors/notfound-err');
 
-const allowedCors = [
-  'https://frontend-mesto.nomoredomains.club',
-  'https://api.backend-mesto.nomoredomains.club',
-  'https://localhost:3000',
-];
-
-app.use(cors({
-  allowedCors: true,
-  origin(origin, callback) {
-    if (allowedCors.includes(origin) || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-}));
-
-app.options('*', cors());
-
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
   useCreateIndex: true,
@@ -53,6 +34,30 @@ const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100,
 });
+
+app.use(cors({
+  origin: 'https://frontend-mesto.nomoredomains.club',
+  credentials: true,
+}));
+
+// app.use(cors);
+
+// const allowedCors = [
+//   'https://frontend-mesto.nomoredomains.club',
+//   'https://api.backend-mesto.nomoredomains.club',
+//   'http://localhost:3000',
+// ];
+
+// const corsOptions = {
+//   origin: (origin, callback) => {
+//     if (allowedCors.indexOf(origin) !== 1) {
+//       callback(null, true);
+//     }
+//   },
+//   credentials: true,
+// };
+
+// app.use(cors(corsOptions));
 
 app.use(helmet());
 app.use(limiter);

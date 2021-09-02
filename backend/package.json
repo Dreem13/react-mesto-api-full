@@ -2,7 +2,6 @@
   "name": "express-mesto",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://dreem13.github.io/express-mesto",
   "main": "app.js",
   "scripts": {
     "dev": "nodemon app.js",

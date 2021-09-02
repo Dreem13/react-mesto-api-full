@@ -154,8 +154,8 @@ function App() {
 
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
 
-  function onTokenCheck(token) { 
-    auth.checkToken(token)
+  function onTokenCheck() { 
+    auth.checkToken()
       .then(res => {
         setIsLoggedIn(res.data != null)
         setUserEmail(res.data.email)
