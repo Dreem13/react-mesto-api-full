@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const { errors } = require('celebrate');
 const rateLimit = require('express-rate-limit');
-const cors = require('cors');
+const cors = require('./middlewares/cors');
 const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
@@ -35,12 +35,12 @@ const limiter = rateLimit({
   max: 100,
 });
 
-app.use(cors({
-  origin: 'https://frontend-mesto.nomoredomains.club',
-  credentials: true,
-}));
+// app.use(cors({
+//   origin: 'https://frontend-mesto.nomoredomains.club',
+//   credentials: true,
+// }));
 
-// app.use(cors);
+app.use(cors);
 
 // const allowedCors = [
 //   'https://frontend-mesto.nomoredomains.club',

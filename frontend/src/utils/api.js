@@ -40,7 +40,6 @@ class Api {
   getCards() {
     return fetch(`${this._url}/cards`, {
       headers: {
-        // authorization: this._token
         'Content-Type': 'application/json'
       },
       credentials: "include",
