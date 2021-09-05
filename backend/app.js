@@ -17,11 +17,13 @@ const { createUser, login } = require('./controllers/users');
 const userRouter = require('./routes/users');
 const cardRouter = require('./routes/cards');
 
-const { PORT = 3000 } = process.env;
-const app = express();
-
 const { validateSignUp, validateSignIn } = require('./middlewares/validators');
 const NotFoundError = require('./errors/notfound-err');
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+});
 
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
@@ -30,17 +32,10 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useUnifiedTopology: true,
 });
 
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 100,
-});
-
 // app.use(cors({
 //   origin: 'https://frontend-mesto.nomoredomains.club',
 //   credentials: true,
 // }));
-
-app.use(cors);
 
 // const allowedCors = [
 //   'https://frontend-mesto.nomoredomains.club',
@@ -59,12 +54,20 @@ app.use(cors);
 
 // app.use(cors(corsOptions));
 
-app.use(helmet());
-app.use(limiter);
-app.use(cookieParser());
-app.use(bodyParser.json());
+const { PORT = 3000 } = process.env;
 
+const app = express();
+
+app.use(cors);
 app.use(requestLogger);
+app.use(limiter);
+app.use(helmet());
+app.use(cookieParser());
+app.use(express.json());
+app.use(express.urlencoded({
+  extended: true,
+}));
+app.use(bodyParser.json());
 
 app.get('/crash-test', () => {
   setTimeout(() => {
@@ -75,14 +78,13 @@ app.get('/crash-test', () => {
 app.post('/signup', validateSignUp, createUser);
 app.post('/signin', validateSignIn, login);
 
-app.use(errorLogger);
-
 app.use(auth);
 app.use('/', userRouter);
 app.use('/', cardRouter);
-app.use('*', (req, res, next) => {
-  next(new NotFoundError('Запрашиваемый ресурс не найден'));
+app.use('*', () => {
+  throw new NotFoundError('Запрашиваемый ресурс не найден');
 });
+app.use(errorLogger);
 app.use(errors());
 app.use(errorHandler);
 
